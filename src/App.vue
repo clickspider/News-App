@@ -78,7 +78,9 @@ export default {
   },
 
   created() {
-    this.getData();
+    if (this.isOnline) {
+      this.getData();
+    }
   },
 
   methods: {
