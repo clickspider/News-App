@@ -6,7 +6,9 @@ import { URL, URL_IP, KEY_NEWS } from "../data/config.js";
 
 Vue.use(Vuex);
 
-const vuexLocalStorage = new VuexPersist({});
+const vuexLocalStorage = new VuexPersist({
+  key: "store"
+});
 
 export const store = new Vuex.Store({
   strict: true,
