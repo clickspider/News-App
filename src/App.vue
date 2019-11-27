@@ -59,11 +59,7 @@
 </template>
 
 <script>
-import Vue from "vue";
-import VueOffline from "vue-offline";
 import { mapActions } from "vuex";
-
-Vue.use(VueOffline);
 
 export default {
   name: "app",
@@ -73,7 +69,7 @@ export default {
       loading: false,
       drawer: false,
       group: null,
-      isOnline: VueOffline,
+      counter: 0,
       items: [
         { title: "Dashboard", icon: "mdi-view-dashboard", url: "/" },
         { title: "Photos", icon: "mdi-image", url: "/" },
@@ -81,10 +77,13 @@ export default {
       ]
     };
   },
+
   created() {
-    if (this.isOnline) {
-      this.getData();
-    }
+    setTimeout(() => {
+      if (this.$data.isOnline) {
+        this.getData();
+      }
+    }, 1000);
   },
 
   methods: {
