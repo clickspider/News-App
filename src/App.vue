@@ -95,6 +95,8 @@ export default {
       if (this.$data.isOnline) {
         this.getData();
         this.loading = false;
+      } else {
+        this.loading = false;
       }
     }, 2000);
   },
