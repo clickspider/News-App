@@ -21,7 +21,7 @@
       <v-btn
         class="ma-2"
         :loading="loading"
-        :disabled="loading"
+        :disabled="isOffline || loading"
         color="info"
         @click="loader = 'loading'"
       >
