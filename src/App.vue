@@ -53,7 +53,19 @@
     </v-navigation-drawer>
 
     <v-content>
-      <router-view></router-view>
+      <div v-if="loading">
+        <v-skeleton-loader
+          v-for="(article, index) in 20"
+          :key="index"
+          class="mx-auto"
+          max-width="400"
+          type="card"
+          :elevation="10"
+          style="margin-top: 2rem;"
+        >
+        </v-skeleton-loader>
+      </div>
+      <router-view :loading="loading"></router-view>
     </v-content>
   </v-app>
 </template>
@@ -66,7 +78,7 @@ export default {
   data() {
     return {
       loader: null,
-      loading: false,
+      loading: true,
       drawer: false,
       group: null,
       counter: 0,
@@ -82,8 +94,9 @@ export default {
     setTimeout(() => {
       if (this.$data.isOnline) {
         this.getData();
+        this.loading = false;
       }
-    }, 1000);
+    }, 2000);
   },
 
   methods: {

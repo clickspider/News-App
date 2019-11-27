@@ -1,18 +1,5 @@
 <template>
   <div>
-    <div v-if="loading">
-      <v-skeleton-loader
-        v-for="(article, index) in articles"
-        :key="index"
-        class="mx-auto"
-        max-width="400"
-        type="card"
-        :elevation="10"
-        style="margin-top: 2rem;"
-      >
-      </v-skeleton-loader>
-    </div>
-
     <div v-if="!loading">
       <v-card
         v-show="article.urlToImage"
@@ -54,16 +41,7 @@ import { mapGetters } from "vuex";
 
 export default {
   name: "News",
-  data: () => ({
-    loading: true
-  }),
-
-  mounted() {
-    setTimeout(() => {
-      this.loading = false;
-    }, 2000);
-  },
-
+  props: ["loading"],
   computed: {
     ...mapGetters(["articles", "isRTL"])
   }
