@@ -1,12 +1,19 @@
 import Vue from "vue";
 import Vuex from "vuex";
 import axios from "axios";
+import VuexPersist from "vuex-persist";
 import { URL, URL_IP, KEY_NEWS } from "../data/config.js";
 
 Vue.use(Vuex);
 
+const vuexLocalStorage = new VuexPersist({
+  key: "vuex", // The key to store the state on in the storage provider.
+  storage: window.localStorage
+});
+
 export const store = new Vuex.Store({
   strict: true,
+  plugins: [vuexLocalStorage.plugin],
   state: {
     // Use this to store your data
     articles: [],
